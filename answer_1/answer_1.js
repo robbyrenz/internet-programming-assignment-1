@@ -12,18 +12,32 @@ function init() {
 
     document.getElementById("position").onclick = function() {
         let foo = document.getElementById("change");
-        foo.style.fontWeight = "700";
+        if (foo.style.position === 'static') {
+            foo.style.position = 'relative';
+            foo.style.top = '200px';
+        } else {
+            foo.style.position = 'static';
+        }
     }
 
     document.getElementById("color").onclick = function() {
         let foo = document.getElementById("change");
-        foo.style.color = "#c5c5c5";
-        foo.style.backgroundColor = "#33ff3f";
+        if (foo.style.color === 'black') {
+            foo.style.color = "#c5c5c5";
+            foo.style.backgroundColor = "#33ff3f";
+        } else {
+            foo.style.color = 'black';
+            foo.style.backgroundColor = 'white';
+        }
     }
 
     document.getElementById("size").onclick = function() {
         let foo = document.getElementById("change");
-        foo.style.fontSize = "2em";
+        if (foo.style.fontSize === '1.5em') {
+            foo.style.fontSize = "2em";
+        } else {
+            foo.style.fontSize = '1.5em';
+        }
     }
 }
 
