@@ -1,91 +1,68 @@
-let placeholder = new ParagraphChanger(document.getElementById("change"));
-// window.onload = new ParagraphChanger(document.getElementById("change"));
-window.onload = placeholder.bold;
+window.onload = init;
+
+function init() {
+    const foo = new ParagraphChanger(document.getElementById("change"));
+}
 
 class ParagraphChanger {
     constructor(paragraph) {
         this.paragraph = paragraph;
         for (let i = 0; i < 4; i++) {
-            document.createElement("button");
-            document.getElementsByTagName("Button")[i].addEventListener('click', (i) => {
-                switch (i) {
-                    case 0: this.bold(); console.log("Hello World"); break;
-                    case 1: // function; break;
-                    case 2: // function; break;
-                    case 3: // function; break;
-                }
-            });
-        }
-    };
+            let btn = document.createElement("button");
+            document.body.appendChild(btn);
+            switch (i) {
+                case 0: btn.textContent = 'bold'; this.bold(); break;
+                case 1: btn.textContent = 'position'; this.position(); break;
+                case 2: btn.textContent = 'color'; this.color(); break;
+                case 3: btn.textContent = 'size'; this.size(); break;
+            }
+        };
+    }
     bold() {
         let foo = this.paragraph;
-        if (foo.style.fontWeight === "bold") {
-            foo.style.fontWeight = "normal";
-        } else {
-            foo.style.fontWeight = "bold";
+        let btn = document.querySelectorAll("button");
+        btn[0].onclick = function() {
+            if (foo.style.fontWeight === "bold") {
+                foo.style.fontWeight = "normal";
+            } else {
+                foo.style.fontWeight = "bold";
+            }
         }
     };
     position() {
-        // more code here
+        let foo = this.paragraph;
+        let btn = document.querySelectorAll("button");
+        btn[1].onclick = function() {
+            if (foo.style.position === 'static') {
+                foo.style.position = 'relative';
+                foo.style.top = '200px';
+            } else {
+                foo.style.position = 'static';
+            }
+        }
     }
     color() {
-        // some more code here
+        let foo = this.paragraph;
+        let btn = document.querySelectorAll("button");
+        btn[2].onclick = function() {
+            if (foo.style.color === 'black') {
+                foo.style.color = "#c5c5c5";
+                foo.style.backgroundColor = "#33ff3f";
+            } else {
+                foo.style.color = 'black';
+                foo.style.backgroundColor = 'white';
+            }
+        }
     }
     size() {
-        // the last piece of code here
+        let foo = this.paragraph;
+        let btn = document.querySelectorAll("button");
+        btn[3].onclick = function() {
+            if (foo.style.fontSize === '1.5em') {
+                foo.style.fontSize = "2em";
+            } else {
+                foo.style.fontSize = '1.5em';
+            }
+        }
     }
 }
-
-// function init() {
-//     document.getElementById("bold").onclick = function() {
-//         let foo = document.getElementById("change");
-//         if (foo.style.fontWeight === "bold") {
-//             foo.style.fontWeight = "normal";
-//         } else {
-//             foo.style.fontWeight = "bold";
-//         }
-//     }
-
-//     document.getElementById("position").onclick = function() {
-//         let foo = document.getElementById("change");
-//         if (foo.style.position === 'static') {
-//             foo.style.position = 'relative';
-//             foo.style.top = '200px';
-//         } else {
-//             foo.style.position = 'static';
-//         }
-//     }
-
-//     document.getElementById("color").onclick = function() {
-//         let foo = document.getElementById("change");
-//         if (foo.style.color === 'black') {
-//             foo.style.color = "#c5c5c5";
-//             foo.style.backgroundColor = "#33ff3f";
-//         } else {
-//             foo.style.color = 'black';
-//             foo.style.backgroundColor = 'white';
-//         }
-//     }
-
-//     document.getElementById("size").onclick = function() {
-//         let foo = document.getElementById("change");
-//         if (foo.style.fontSize === '1.5em') {
-//             foo.style.fontSize = "2em";
-//         } else {
-//             foo.style.fontSize = '1.5em';
-//         }
-//     }
-// }
-
-// function init() {
-//     let buttons = document.getElementsByTagName("button");
-//     for (let i = 0; i < buttons.length; i++) {
-//         function simplify() {
-//             if (buttons[i].id === "bold") {
-//                 buttons[i].onclick = function() {
-//                     buttons[i].style.fontWeight = "700";
-//                 }
-//             }
-//         }
-//     }
-// }
