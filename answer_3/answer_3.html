@@ -1,0 +1,75 @@
+<!--Name: Robby Renz Abeysinghe
+----Answer 3 of Assignment 1-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function Obj(name, value) {
+            this.name = name;
+            this.value = value;
+        }
+
+        const thousandObjects = new Array(1000);
+
+        for (let i = 0; i < 1000; i++) {
+            thousandObjects[i] = new Obj(`Robby${i}`, i);
+        }
+
+        let upper = new Array();
+        let lower = new Array();
+
+        function upperFunction(arr, upper) {
+            for (let i = 0; i < 1000; i++) {
+                upper[i] = JSON.parse(JSON.stringify(arr[i]));
+                upper[i].name = upper[i].name.toUpperCase();
+                upper[i].value = upper[i].value * 5;
+                upper[i].found = new Array();
+            }
+        }
+
+        function lowerFunction(arr, lower) {
+            for (let i = 0; i < 1000; i++) {
+                lower[i] = JSON.parse(JSON.stringify(arr[i]));
+                lower[i].name = lower[i].name.toLowerCase();
+                lower[i].value = lower[i].value * 3;
+            }
+        }
+
+        upperFunction(thousandObjects, upper);
+        lowerFunction(thousandObjects, lower);
+
+        let finalArray = new Array();
+
+        function division(up, down, finalArray) {
+            for (let i = 0; i < 1000; i++) {
+                for (let j = 0; j < 1000; j++) {
+                    // if (up[i].value % down[j].value === 0 /* && up[i].value >= down[j].value */) {
+                    //     // if (up[i].value < down[j].value)
+                    //     //     continue;
+                    //     finalArray[i] = up[i];
+                    //     finalArray[i].found = down[j];
+                    // }
+                    if (up[j].value % down[i].value === 0) {
+                        finalArray[j] = up[j];
+                        finalArray[j].found[j] = down[i];
+                    }
+                }
+            }
+        }
+
+        division(upper, lower, finalArray);
+        console.log(finalArray);
+
+    </script>
+</head>
+<body>
+    <h1>
+        Answer 3 of Assignment 1
+    </h1>
+</body>
+</html>
